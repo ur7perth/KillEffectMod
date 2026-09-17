@@ -1,0 +1,20 @@
+here{
+  "schemaVersion": 1,
+  "id": "killeffect",
+  "version": "${version}",
+  "name": "Kill Effect",
+  "description": "Choose a custom kill effect that only you can see when you kill a player",
+  "authors": ["abo9kr"],
+  "license": "CC0-1.0",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["com.example.killeffect.KillEffectClient"]
+  },
+  "mixins": ["killeffect.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.15.11",
+    "fabric-api": "*",
+    "minecraft": "1.21.x",
+    "java": ">=21"
+  }
+}
