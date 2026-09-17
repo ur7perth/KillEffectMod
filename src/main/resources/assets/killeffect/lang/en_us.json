@@ -1,0 +1,12 @@
+{
+  "key.killeffect.open": "Open Kill Effect Menu",
+  "key.category.killeffect": "Kill Effect",
+  "killeffect.gui.title": "Kill Effects",
+  "killeffect.gui.selected": "Selected: %s",
+  "killeffect.gui.speed": "Speed: %s x",
+  "killeffect.type.lightning": "Lightning",
+  "killeffect.type.tnt": "TNT",
+  "killeffect.type.totem": "Totem",
+  "killeffect.type.firework": "Firework",
+  "killeffect.type.anvil": "Anvil"
+}
