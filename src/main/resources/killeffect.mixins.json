@@ -1,0 +1,8 @@
+Enter{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.example.killeffect.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": ["LivingEntityMixin"],
+  "injectors": { "defaultRequire": 1 }
+}
