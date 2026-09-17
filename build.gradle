@@ -18,6 +18,9 @@ loom {
 			sourceSet sourceSets.client
 		}
 	}
+	mixin {
+		defaultRefmapName = "killeffect.refmap.json"
+	}
 }
 
 dependencies {
