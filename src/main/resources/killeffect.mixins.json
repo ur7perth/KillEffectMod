@@ -3,6 +3,7 @@
   "minVersion": "0.8",
   "package": "com.example.killeffect.mixin",
   "compatibilityLevel": "JAVA_21",
+  "refmap": "killeffect.refmap.json",
   "client": ["LivingEntityMixin"],
   "injectors": { "defaultRequire": 1 }
 }
