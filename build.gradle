@@ -11,13 +11,6 @@ base { archivesName = project.archives_base_name }
 repositories { mavenCentral() }
 
 loom {
-	splitEnvironmentSourceSets()
-	mods {
-		"killeffect" {
-			sourceSet sourceSets.main
-			sourceSet sourceSets.client
-		}
-	}
 	mixin {
 		defaultRefmapName = "killeffect.refmap.json"
 	}
