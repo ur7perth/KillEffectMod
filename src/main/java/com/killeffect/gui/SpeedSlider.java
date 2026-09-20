@@ -28,7 +28,7 @@ public class SpeedSlider extends SliderWidget {
 
     @Override
     protected void updateMessage() {
-        this.setMessage(Text.literal(String.format("السرعة: %.2fx", denormalize())));
+        this.setMessage(Text.literal(String.format("Speed: %.2fx", denormalize())));
     }
 
     @Override
