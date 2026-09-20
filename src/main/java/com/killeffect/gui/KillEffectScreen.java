@@ -22,7 +22,7 @@ public class KillEffectScreen extends Screen {
     private SpeedSlider speedSlider;
 
     public KillEffectScreen() {
-        super(Text.literal("اختيار تأثير القتل"));
+        super(Text.literal("Select Kill Effect"));
     }
 
     @Override
@@ -40,7 +40,7 @@ public class KillEffectScreen extends Screen {
 
         rebuildSpeedSlider();
 
-        this.addDrawableChild(ButtonWidget.builder(Text.literal("إغلاق"), btn -> this.close())
+        this.addDrawableChild(ButtonWidget.builder(Text.literal("Close"), btn -> this.close())
                 .dimensions(this.width / 2 - 40, this.height / 2 + 66, 80, 20)
                 .build());
     }
@@ -88,7 +88,7 @@ public class KillEffectScreen extends Screen {
                     selected ? 0xFFFFFF55 : 0xFFCCCCCC);
         }
 
-        Text speedLabel = Text.literal("سرعة التأثير المختار");
+        Text speedLabel = Text.literal("Effect Speed");
         context.drawCenteredTextWithShadow(this.textRenderer, speedLabel, this.width / 2, this.height / 2 + 14, 0xFFAAAAAA);
 
         super.render(context, mouseX, mouseY, delta);
