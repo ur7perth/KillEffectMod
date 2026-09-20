@@ -10,7 +10,6 @@ import net.minecraft.component.type.FireworksComponent;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.FallingBlockEntity;
 import net.minecraft.entity.LightningEntity;
-import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.TntEntity;
 import net.minecraft.entity.projectile.FireworkRocketEntity;
 import net.minecraft.item.ItemStack;
@@ -25,10 +24,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Spawns every effect entirely inside the local ClientWorld (world.addEntity / world.addParticle
+ * / playSound with the client player as the sound "source"). None of this is ever sent to the
+ * server, so nothing here is visible to other players - only to the person who triggered it.
+ */
 public class KillEffectRenderer {
     private static final Random RANDOM = new Random();
     private static final List<ScheduledTask> SCHEDULED_TASKS = new ArrayList<>();
 
+    /** Call once per client tick (from KillEffectClient) to run delayed effect sounds. */
     public static void tick() {
         SCHEDULED_TASKS.removeIf(task -> {
             task.ticksLeft--;
@@ -59,10 +64,10 @@ public class KillEffectRenderer {
     }
 
     private static void spawnLightning(ClientWorld world, Vec3d pos) {
-        LightningEntity bolt = EntityType.LIGHTNING_BOLT.create(world, SpawnReason.TRIGGERED);
+        LightningEntity bolt = EntityType.LIGHTNING_BOLT.create(world);
         if (bolt == null) return;
         bolt.refreshPositionAfterTeleport(pos.x, pos.y, pos.z);
-        bolt.setCosmetic(true);
+        bolt.setCosmetic(true); // visual only: no damage, no fire, no block changes
         world.addEntity(bolt);
     }
 
@@ -88,6 +93,7 @@ public class KillEffectRenderer {
 
     private static void spawnFirework(ClientWorld world, Vec3d pos, float speed) {
         ItemStack stack = new ItemStack(Items.FIREWORK_ROCKET);
+        // 1.20.5+ item data uses components instead of raw NBT tags.
         stack.set(DataComponentTypes.FIREWORKS, new FireworksComponent(1, List.of()));
 
         FireworkRocketEntity rocket = new FireworkRocketEntity(world, pos.x, pos.y, pos.z, stack);
